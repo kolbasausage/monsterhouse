@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://dux51f2kxn5wb"]
+
+[ext_resource type="Script" uid="uid://disqu1wi6p6gr" path="res://control.gd" id="1_mlphb"]
+[ext_resource type="Texture2D" uid="uid://cvo7tq177cy7" path="res://background_placeholder.png" id="2_opqoc"]
+[ext_resource type="Texture2D" uid="uid://ctukqqapwge10" path="res://bar_placeholder.png" id="2_po0ka"]
+[ext_resource type="Texture2D" uid="uid://c1gwcqed5eg0n" path="res://bar_under_placeholder.png" id="3_bpcsf"]
+[ext_resource type="Texture2D" uid="uid://by25ex0568leo" path="res://chef_chopping_placeholder.png" id="5_3d2pr"]
+[ext_resource type="Texture2D" uid="uid://bb7ff7hwxvyxa" path="res://chef_hand_up_placeholder.png" id="6_h5hfs"]
+[ext_resource type="Texture2D" uid="uid://dqgf1rb505cf5" path="res://microwave_placeholder.png" id="7_snaye"]
+[ext_resource type="Texture2D" uid="uid://cn1yes861v6r6" path="res://microwave_frame_1_placeholder.png" id="8_1wc4g"]
+[ext_resource type="Texture2D" uid="uid://50odtdptd08p" path="res://microwave_frame_2_placeholder.png" id="9_78j2m"]
+[ext_resource type="Texture2D" uid="uid://bnnxldw4ckk2x" path="res://monster_idle_placeholder.png" id="10_na8jj"]
+[ext_resource type="Texture2D" uid="uid://doff3l74sbq8y" path="res://monster_frame_2_placeholder.png" id="11_jv0we"]
+[ext_resource type="Texture2D" uid="uid://ckkromrcyl4m0" path="res://serve_cold_placeholder.png" id="12_nuflt"]
+[ext_resource type="Texture2D" uid="uid://c70mdu51hlck5" path="res://serve_hot_placeholder.png" id="13_if5p2"]
+[ext_resource type="Texture2D" uid="uid://2w8lpwieal0r" path="res://heat_placeholder.png" id="14_f54l4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5smy7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3d2pr")
+}],
+"loop": true,
+"name": &"chopping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_h5hfs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glbr4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_snaye")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1wc4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_78j2m")
+}],
+"loop": true,
+"name": &"turned_on",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t06ws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_na8jj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jv0we")
+}],
+"loop": true,
+"name": &"eating",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_na8jj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control" unique_id=1589487288]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_mlphb")
+
+[node name="background" type="TextureRect" parent="." unique_id=2008126016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_opqoc")
+
+[node name="hunger_bar" type="TextureProgressBar" parent="." unique_id=2127288926]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.098000005
+anchor_right = 0.5
+anchor_bottom = 0.098000005
+offset_left = -500.0
+offset_top = -42.840004
+offset_right = 500.0
+offset_bottom = 42.159996
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+texture_under = ExtResource("3_bpcsf")
+texture_progress = ExtResource("2_po0ka")
+
+[node name="chef" type="AnimatedSprite2D" parent="." unique_id=1264646874]
+position = Vector2(1459, 686)
+sprite_frames = SubResource("SpriteFrames_5smy7")
+animation = &"chopping"
+
+[node name="microwave" type="AnimatedSprite2D" parent="." unique_id=429425790]
+position = Vector2(1100, 588)
+sprite_frames = SubResource("SpriteFrames_glbr4")
+animation = &"idle"
+frame_progress = 0.533632
+
+[node name="monster" type="AnimatedSprite2D" parent="." unique_id=1297223907]
+position = Vector2(434, 620)
+sprite_frames = SubResource("SpriteFrames_t06ws")
+animation = &"eating"
+frame = 1
+frame_progress = 0.7838544
+
+[node name="serve_cold" type="Button" parent="." unique_id=114268029]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.558
+anchor_top = 0.855
+anchor_right = 0.558
+anchor_bottom = 0.855
+offset_left = -248.3601
+offset_top = -77.400024
+offset_right = -90.36005
+offset_bottom = 80.599976
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("12_nuflt")
+
+[node name="serve_hot" type="Button" parent="." unique_id=80328716]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.558
+anchor_top = 0.855
+anchor_right = 0.558
+anchor_bottom = 0.855
+offset_left = -78.36011
+offset_top = -79.400024
+offset_right = 79.63989
+offset_bottom = 78.599976
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("13_if5p2")
+
+[node name="heat" type="Button" parent="." unique_id=1310455017]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 312.0
+offset_right = 1171.0
+offset_bottom = 470.0
+icon = ExtResource("14_f54l4")
+
+[node name="info_label" type="Label" parent="." unique_id=313375213]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 169.0
+offset_right = 1216.0
+offset_bottom = 235.0
+
+[node name="chop" type="Button" parent="." unique_id=623811835]
+layout_mode = 0
+offset_left = 1252.0
+offset_top = 284.0
+offset_right = 1927.0
+offset_bottom = 1046.0
