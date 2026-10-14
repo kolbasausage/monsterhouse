@@ -5,7 +5,7 @@ const HEAT_TIME := 4.5
 const FEED_AMOUNT := 8.0
 const WRONG_FOOD_PENALTY := 5.0
 const DRAIN_PER_SEC := 1.5
-const NIGHT_LENGTH := 240.0 # real seconds from 12am to 6am
+const NIGHT_LENGTH := 240.0 #second from 12 am to 6 am
 const DEMAND_EXPIRE := 8.0
 
 var bar := 50.0
@@ -73,7 +73,7 @@ func check_end() -> void:
 	elif bar >= 100.0:
 		end_game("THE MONSTER GOT TOO STRONG")
 	elif elapsed >= NIGHT_LENGTH:
-		end_game("6 AM. YOU SURVIVED. GO TO SLEEP")
+		end_game("6 AM. YOU SURVIVED")
 
 
 func end_game(message: String) -> void:
